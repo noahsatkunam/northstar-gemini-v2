@@ -478,12 +478,11 @@ export default function RiskAssessment() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-background pt-20 pb-12 md:pt-32 md:pb-20">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
-        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px] animate-pulse" />
         
         <div className="container relative z-10 px-4 md:px-8 text-center">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-sm font-medium mb-6 border border-red-500/20">
@@ -514,9 +513,9 @@ export default function RiskAssessment() {
               {step === "form" && (
                 <motion.div 
                   key="form"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="rounded-[2rem] border border-border/50 bg-card/50 backdrop-blur-xl p-8 md:p-12 shadow-2xl relative overflow-hidden"
                 >
@@ -596,8 +595,8 @@ export default function RiskAssessment() {
               {step === "results" && (
                 <motion.div
                   key="results"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                   className="space-y-8"
                 >

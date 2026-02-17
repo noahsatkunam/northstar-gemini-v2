@@ -63,15 +63,15 @@ export default function Compliance() {
         
         <div className="container relative z-10 px-4 md:px-8 text-center">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20">
               <ShieldCheck className="w-4 h-4" />
               <span>Audit-Ready Infrastructure</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold tracking-tighter mb-8">
               Compliance Without the{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                 Complexity
@@ -96,8 +96,8 @@ export default function Compliance() {
             {complianceAreas.map((area, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-3xl bg-background border border-border/50 p-8 hover:shadow-2xl hover:border-primary/30 transition-all duration-300"
@@ -153,8 +153,8 @@ export default function Compliance() {
             ].map((step, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
                 className="relative text-center group"

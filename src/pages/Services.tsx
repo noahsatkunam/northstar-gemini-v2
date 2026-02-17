@@ -2,9 +2,10 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Server, Shield, Bot, Lightbulb, CheckCircle2, ArrowRight, ChevronRight, Cpu, Globe, Zap } from "lucide-react";
 import { useContactModal } from "@/components/ContactModal";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { AnimatedSection } from "@/components/motion/AnimatedSection";
 
 const serviceCategories = [
   {
@@ -67,23 +68,17 @@ const serviceCategories = [
 
 export default function Services() {
   const { openModal } = useContactModal();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
 
   return (
     <Layout>
       {/* HERO */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-background pt-20">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
-        <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[100px] animate-pulse" />
         
         <div className="container relative z-10 px-4 md:px-8">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
@@ -91,7 +86,7 @@ export default function Services() {
               <Zap className="w-4 h-4" />
               <span>Our Services</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold tracking-tighter mb-8">
               Technology Solutions That Drive Your{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-accent">
                 Business Forward
@@ -115,7 +110,7 @@ export default function Services() {
       </section>
 
       {/* STICKY SCROLL SECTION */}
-      <section ref={containerRef} className="relative bg-background py-20">
+      <section className="relative bg-background py-20">
         <div className="container px-4 md:px-8">
           {serviceCategories.map((service, index) => (
             <ServiceBlock key={service.id} service={service} index={index} />
@@ -148,11 +143,7 @@ export default function Services() {
 
 function ServiceBlock({ service, index }: { service: any, index: number }) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+    <AnimatedSection 
       className="min-h-screen flex items-center justify-center py-20 sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border/10 last:border-0"
     >
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center w-full">
@@ -216,6 +207,6 @@ function ServiceBlock({ service, index }: { service: any, index: number }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </AnimatedSection>
   );
 }

@@ -56,11 +56,11 @@ export default function About() {
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 invert" />
         <div className="container relative z-10 px-4 md:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter mb-8 text-white">
+            <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold tracking-tighter mb-8 text-white">
               Your Technology Partner for the <span className="text-primary">Long Haul</span>
             </h1>
             <p className="text-xl md:text-3xl text-gray-400 max-w-3xl mx-auto leading-relaxed font-light">
@@ -77,8 +77,8 @@ export default function About() {
             {stats.map((stat, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="text-center"

@@ -25,22 +25,12 @@ import {
   Quote,
   Star
 } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import inc5000Badge from "@/assets/inc-5000-badge.png";
 import soc2Badge from "@/assets/soc2-badge.webp";
 import hipaaBadge from "@/assets/hipaa-badge.png";
 
 export default function Index() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
-
   const scrollToProtectPropel = () => {
     const element = document.getElementById('protect-propel');
     if (element) {
@@ -53,8 +43,6 @@ export default function Index() {
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full bg-primary/5 blur-[120px] animate-pulse" />
-          <div className="absolute bottom-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-accent/5 blur-[100px] animate-pulse delay-1000" />
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]" />
         </div>
 
@@ -62,19 +50,15 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-8">
               <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 border border-primary/20">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                  </span>
                   Trusted by regulated organizations
                 </div>
                 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] text-foreground mb-6">
+                <h1 className="text-4xl md:text-6xl lg:text-6xl font-bold tracking-tighter leading-[1.1] text-foreground mb-6">
                   Technology should{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-accent">
                     protect
@@ -92,8 +76,8 @@ export default function Index() {
               </motion.div>
 
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4"
               >
@@ -119,8 +103,8 @@ export default function Index() {
 
             {/* Visual Element */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative hidden lg:block"
             >
@@ -232,7 +216,7 @@ export default function Index() {
       </section>
 
       {/* PROTECT & PROPEL */}
-      <section id="protect-propel" className="py-20 md:py-28 bg-background relative" ref={targetRef}>
+      <section id="protect-propel" className="py-20 md:py-28 bg-background relative">
         <div className="container px-4 md:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Our Approach</span>
@@ -246,8 +230,7 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* PROTECT CARD */}
-            <motion.div 
-              style={{ opacity, scale }}
+            <AnimatedSection 
               className="group relative overflow-hidden rounded-[2.5rem] bg-card border border-border/50 p-8 md:p-12 hover:border-primary/50 transition-all duration-500 shadow-2xl"
             >
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110 group-hover:rotate-12">
@@ -279,12 +262,12 @@ export default function Index() {
                 </ul>
               </div>
               <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </motion.div>
+            </AnimatedSection>
 
             {/* PROPEL CARD */}
-            <motion.div 
-              style={{ opacity, scale }}
+            <AnimatedSection 
               className="group relative overflow-hidden rounded-[2.5rem] bg-card border border-border/50 p-8 md:p-12 hover:border-accent/50 transition-all duration-500 shadow-2xl"
+              delay={0.2}
             >
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform group-hover:scale-110 group-hover:-rotate-12">
                 <Rocket className="w-64 h-64" />
@@ -315,7 +298,7 @@ export default function Index() {
                 </ul>
               </div>
               <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-accent to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
